@@ -1,21 +1,8 @@
-﻿module Tests
+﻿module ``Converting digits to integer``
+    open Xunit
+    open RomanNumeralsV1
+    open FsUnit.Xunit
 
-open System
-open Xunit
-open RomanNumerals
-open FsUnit.Xunit
-
-module ``Converting one digit to integer`` =
-    [<Fact>]
-    let ``Given I digit should return 1`` () = I |> digitToInt |> should equal 1
-
-    [<Fact>]
-    let ``Given V digit should return 5`` () = V |> digitToInt |> should equal 5
-
-    [<Fact>]
-    let ``Given M digit should return 1000`` () = M |> digitToInt |> should equal 1000
-
-module ``Converting digits to integer`` =
     [<Fact>]
     let ``Given IIII digits should return 4`` () = RomanNumeral [I;I;I;I] |> toInt |> should equal 4
 

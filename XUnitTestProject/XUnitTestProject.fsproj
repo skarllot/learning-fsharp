@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Tests.fs" />
+    <Compile Include="isValidTests.fs" />
+    <Compile Include="isValidDigitListTests.fs" />
+    <Compile Include="toRomanNumeralTests.fs" />
+    <Compile Include="digitsToIntTests.fs" />
+    <Compile Include="digitToIntTests.fs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿module RomanNumerals
+﻿module RomanNumeralsV1
     type RomanDigit = I | V | X | L | C | D | M
     type RomanNumeral = RomanNumeral of RomanDigit list
 
@@ -56,3 +56,51 @@
                 None
             )
         |> RomanNumeral
+
+    let runsAllowed =
+        function
+        | I | X | C | M -> true
+        | V | L | D -> false
+
+    let noRunsAllowed = runsAllowed >> not
+
+    let rec isValidDigitList digitList =
+        match digitList with
+
+        | [] -> true
+
+        | d1::d2::d3::d4::d5::_
+            when d1=d2 && d1=d3 && d1=d4 && d1=d5 ->
+                false
+
+        | d1::d2::_
+            when d1=d2 && noRunsAllowed d1 ->
+                false
+
+        | d1::d2::d3::d4::higher::ds
+            when d1=d2 && d1=d3 && d1=d4
+            && runsAllowed d1
+            && higher > d1 ->
+                false
+
+        | d1::d2::d3::higher::ds
+            when d1=d2 && d1=d3
+            && runsAllowed d1
+            && higher > d1 ->
+                false
+
+        | d1::d2::higher::ds
+            when d1=d2
+            && runsAllowed d1
+            && higher > d1 ->
+                false
+
+        | d1::d2::d3::_
+            when d1<d2 && d2<=d3 ->
+                false
+
+        | _::ds ->
+            isValidDigitList ds
+
+    let isValid (RomanNumeral digitList) =
+        isValidDigitList digitList
