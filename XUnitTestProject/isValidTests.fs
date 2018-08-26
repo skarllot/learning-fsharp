@@ -1,25 +1,28 @@
 ﻿module ``Convert string to roman numeral and validate it``
     open FsUnit.Xunit
-    open RomanNumeralsV1
+    open RomanNumeralsV2
     open Xunit
 
-    [<Fact>]
-    let ``Given IIII should return true`` () = "IIII" |> toRomanNumeral |> isValid |> should equal true
+    [<Theory>]
+    [<InlineData("IIII")>]
+    [<InlineData("IV")>]
+    [<InlineData("IX")>]
+    [<InlineData("VX")>]
+    [<InlineData("XIV")>]
+    [<InlineData("XIX")>]
+    [<InlineData("XXII")>]
+    [<InlineData("")>]
+    let ``Given a valid string should return true`` s = s |> toRomanNumeral |> isValid |> should equal true
 
-    [<Fact>]
-    let ``Given IV should return true`` () = "IV" |> toRomanNumeral |> isValid |> should equal true
-
-    [<Fact>]
-    let ``Given XIV should return true`` () = "XIV" |> toRomanNumeral |> isValid |> should equal true
-
-    [<Fact>]
-    let ``Given MMDXC should return true`` () = "MMDXC" |> toRomanNumeral |> isValid |> should equal true
-
-    [<Fact>]
-    let ``Given emptry string should return true`` () = "" |> toRomanNumeral |> isValid |> should equal true
-
-    [<Fact>]
-    let ``Given IIXX should return false`` () = "IIXX" |> toRomanNumeral |> isValid |> should equal false
-
-    [<Fact>]
-    let ``Given VV should return false`` () = "VV" |> toRomanNumeral |> isValid |> should equal false
+    [<Theory>]
+    [<InlineData("IIIII")>]
+    [<InlineData("VV")>]
+    [<InlineData("LL")>]
+    [<InlineData("DD")>]
+    [<InlineData("IIV")>]
+    [<InlineData("XXXM")>]
+    [<InlineData("CCCCD")>]
+    [<InlineData("IVX")>]
+    [<InlineData("XLD")>]
+    [<InlineData("IIXX")>]
+    let ``Given a invalid string should return false`` s = s |> toRomanNumeral |> isValid |> should equal false

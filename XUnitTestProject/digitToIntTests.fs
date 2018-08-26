@@ -1,12 +1,17 @@
 ﻿module ``Converting one digit to integer``
     open Xunit
-    open RomanNumeralsV1
+    open RomanNumeralsV2
     open FsUnit.Xunit
-    [<Fact>]
-    let ``Given I digit should return 1`` () = I |> digitToInt |> should equal 1
 
-    [<Fact>]
-    let ``Given V digit should return 5`` () = V |> digitToInt |> should equal 5
+    type TestData =
+        static member DigitsData : obj[][] =
+            [|
+                [|I;1|]
+                [|III;3|]
+                [|V;5|]
+                [|CM;900|]
+                [|M;1000|]
+            |]
 
-    [<Fact>]
-    let ``Given M digit should return 1000`` () = M |> digitToInt |> should equal 1000
+    [<Theory; MemberData("DigitsData", MemberType=typeof<TestData>)>]
+    let ``Given one digit should return the equivalent number`` digit (expected:int) = digit |> digitToInt |> should equal expected

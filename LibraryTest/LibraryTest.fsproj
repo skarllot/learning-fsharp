@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="RomanNumerals.fs" />
+    <Compile Include="RomanNumeralsV2.fs" />
+    <Compile Include="RomanNumeralsV1.fs" />
     <Compile Include="03CompareWithCSharp.fs" />
     <Compile Include="02FSharpSyntax.fs" />
   </ItemGroup>
