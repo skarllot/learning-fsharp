@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="RomanNumerals.fs" />
+    <Compile Include="03CompareWithCSharp.fs" />
+    <Compile Include="02FSharpSyntax.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NETStandard.WindowsCE" Version="1.5.0" />
+  </ItemGroup>
+
+</Project>
